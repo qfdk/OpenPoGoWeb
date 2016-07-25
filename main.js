@@ -107,6 +107,7 @@ function initMap() {
   log({message:'Data Loaded!'});
   setInterval(updateTrainer, 1000);
   setInterval(addCatchable, 1000);
+  setInterval(addInventory, 5000);
 }
 
 $('#switchPan').change(function(){
@@ -152,11 +153,16 @@ var errorFunc = function(xhr) {
 };
 
 var invSuccess = function(data, user_index) {
-  user_data[users[user_index]].bagCandy = filter(data, 'pokemon_family');
-  user_data[users[user_index]].bagItems = filter(data, 'item');
-  user_data[users[user_index]].bagPokemon = filter(data, 'pokemon_data');
-  user_data[users[user_index]].pokedex = filter(data, 'pokedex_entry');
-  user_data[users[user_index]].stats = filter(data, 'player_stats');
+  bagCandy = filter(data, 'pokemon_family');
+  bagItems = filter(data, 'item');
+  bagPokemon = filter(data, 'pokemon_data');
+  pokedex = filter(data, 'pokedex_entry');
+  stats = filter(data, 'player_stats');
+  user_data[users[user_index]].bagCandy = bagCandy;
+  user_data[users[user_index]].bagItems = bagItems;
+  user_data[users[user_index]].bagPokemon = bagPokemon;
+  user_data[users[user_index]].pokedex = pokedex;
+  user_data[users[user_index]].stats = stats;
 };
 
 var trainerFunc = function(data, user_index) {
