@@ -135,7 +135,7 @@ $('#imageType').change(function(){
 
 $('#strokeOn').change(function(){
     for (var i = 0; i < users.length; i++) {
-        user_data[users[i]].trainerPath.setOptions({strokeOpacity: this.checked ? 1.0 : 0.0})
+        user_data[users[i]].trainerPath.setOptions({strokeOpacity: this.checked ? 1.0 : 0.0});
     }
 });
 
@@ -212,10 +212,10 @@ var trainerFunc = function(data, user_index) {
   if (pathcoords[users[user_index]][pathcoords[users[user_index]].length] > 1) {
     var tempcoords = [{lat: parseFloat(data.lat), lng: parseFloat(data.lng)}];
     if (tempcoords.lat != pathcoords[users[user_index]][pathcoords[users[user_index]].length-1].lat && tempcoords.lng != pathcoords[users[user_index]][pathcoords[users[user_index]].length-1].lng || pathcoords[users[user_index]].length === 1) {
-      pathcoords[users[user_index]].push({lat: parseFloat(data.lat), lng: parseFloat(data.lng)})
+      pathcoords[users[user_index]].push({lat: parseFloat(data.lat), lng: parseFloat(data.lng)});
     }
   } else {
-    pathcoords[users[user_index]].push({lat: parseFloat(data.lat), lng: parseFloat(data.lng)})
+    pathcoords[users[user_index]].push({lat: parseFloat(data.lat), lng: parseFloat(data.lng)});
   }  
   if (user_data[users[user_index]].hasOwnProperty('marker') === false) {
     buildTrainerList();
@@ -614,29 +614,29 @@ function sortAndShowBagPokemon(sortOn, user_id) {
       break;
     case 'id':
       sortedPokemon.sort(function(a, b){
-        return a.id - b.id
+        return a.id - b.id;
       });
       break;
     case 'cp':
       sortedPokemon.sort(function(a, b){
-        if (a.cp > b.cp) return -1
-        if(a.cp < b.cp) return 1
-        return 0
+        if (a.cp > b.cp) return -1;
+        if (a.cp < b.cp) return 1;
+        return 0;
       });
       break;
     case 'iv':
       sortedPokemon.sort(function(a, b){
-        if (a.iv > b.iv) return -1
-        if(a.iv < b.iv) return 1
-        return 0
+        if (a.iv > b.iv) return -1;
+        if (a.iv < b.iv) return 1;
+        return 0;
       });
       break;
       break;
     case 'time':
       sortedPokemon.sort(function(a, b){
-        if (a.creation_time_ms > b.creation_time_ms) return -1
-        if(a.creation_time_ms < b.creation_time_ms) return 1
-        return 0
+        if (a.creation_time_ms > b.creation_time_ms) return -1;
+        if (a.creation_time_ms < b.creation_time_ms) return 1;
+        return 0;
       });
       break;
   }
@@ -646,7 +646,7 @@ function sortAndShowBagPokemon(sortOn, user_id) {
     pkmnName = pokemonArray[pkmnNum-1].Name;
     pkmnCP = sortedPokemon[i].cp;
     pkmnIV = sortedPokemon[i].iv;
-    candyNum = getCandy(pkmnNum, user_id)
+    candyNum = getCandy(pkmnNum, user_id);
     out += '<div class="col s12 m6 l3 center"><img src="image/pokemon/' +
             pkmnImage +
             '" class="png_img"><br><b>' +
@@ -683,28 +683,27 @@ function sortAndShowPokedex(sortOn, user_id) {
       "enc": (pkmCap || 0)
     });
   }
-  console.log(sortedPokedex)
   switch(sortOn) {
     case 'id':
       sortedPokedex.sort(function(a, b){
-        return a.id - b.id
+        return a.id - b.id;
       });
       break;
     case 'name':
       sortedPokedex.sort(function(a, b){
-        if(a.name < b.name) return -1;
-        if(a.name > b.name) return 1;
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
         return 0;
       });
       break;
     case 'enc':
       sortedPokedex.sort(function(a, b){
-        return a.enc - b.enc
+        return a.enc - b.enc;
       });
       break;
     case 'cap':
       sortedPokedex.sort(function(a, b){
-        return a.cap - b.cap
+        return a.cap - b.cap;
       });
       break;
   }
@@ -713,9 +712,9 @@ function sortAndShowPokedex(sortOn, user_id) {
     pkmnImage = pad_with_zeroes(pkmnNum, 3) +'.png';
     pkmnName = pokemonArray[pkmnNum-1].Name;
     pkmnName = pokemonArray[pkmnNum-1].Name;
-    pkmnEnc = sortedPokedex[i].enc
-    pkmnCap = sortedPokedex[i].cap
-    candyNum = getCandy(pkmnNum, user_id)
+    pkmnEnc = sortedPokedex[i].enc;
+    pkmnCap = sortedPokedex[i].cap;
+    candyNum = getCandy(pkmnNum, user_id);
     out += '<div class="col s12 m6 l3 center"><img src="image/pokemon/' +
             pkmnImage +
             '" class="png_img"><br><b> ' +
@@ -737,8 +736,7 @@ function sortAndShowPokedex(sortOn, user_id) {
 // Adds events to log panel and if it's closed sends Toast
 function log( log_object ){
   var currentDate = new Date();
-  var time = ('0' + currentDate.getHours()).slice(-2) + ':'
-             + ('0' + (currentDate.getMinutes())).slice(-2);
+  var time = ('0' + currentDate.getHours()).slice(-2) + ':' + ('0' + (currentDate.getMinutes())).slice(-2);
   $("#logs-panel .card-content").append("<div class='log-item'>\
   <span class='log-date'>"+time+"</span><p class='"+log_object.color+"'>"+log_object.message+"</p></div>");
   if(!$('#logs-panel').is(":visible")){
